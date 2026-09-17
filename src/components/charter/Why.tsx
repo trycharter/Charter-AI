@@ -505,17 +505,21 @@ export function Why() {
         });
 
         // previous card softens as the next one arrives
-        gsap.to(card, {
-          scale: 0.97,
-          opacity: 0.75,
-          ease: "none",
-          scrollTrigger: {
-            trigger: card,
-            start: "bottom 55%",
-            end: "bottom 10%",
-            scrub: true,
+        gsap.fromTo(
+          card,
+          { scale: 1 },
+          {
+            scale: 0.97,
+            ease: "none",
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: card,
+              start: "bottom 55%",
+              end: "bottom 5%",
+              scrub: true,
+            },
           },
-        });
+        );
       });
 
       gsap.fromTo(
