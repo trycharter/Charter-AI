@@ -252,23 +252,6 @@ export function Problem() {
         preserveAspectRatio="none"
         fill="none"
       >
-        <path
-          data-draw
-          d="M300,250 C400,300 470,330 560,300"
-          stroke="#111111"
-          strokeWidth="2"
-          strokeLinecap="round"
-          vectorEffect="non-scaling-stroke"
-        />
-        <path
-          data-draw
-          d="M880,320 C820,400 740,430 660,430"
-          stroke="#111111"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeDasharray="0"
-          vectorEffect="non-scaling-stroke"
-        />
         {/* lines leaving toward the next scene */}
         <path
           data-draw
