@@ -102,6 +102,8 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    /* guards against transient off-canvas animation states */
+    overflow-x: clip;
   }
 
   body {

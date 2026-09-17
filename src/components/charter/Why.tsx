@@ -540,7 +540,7 @@ export function Why() {
   }, []);
 
   return (
-    <section ref={root} className="shell py-28 sm:py-36">
+    <section ref={root} className="shell overflow-x-clip py-28 sm:py-36">
       <div className="max-w-[44rem]">
         <span data-intro className="chip-brut inline-block bg-pistachio px-3 py-1 text-[11px] uppercase tracking-[0.2em]">
           Why Charter
