@@ -61,10 +61,21 @@ export function Footer() {
         {/* pastel block sitting behind part of the oversized wordmark */}
         <span className="absolute bottom-[12%] left-[7%] h-[42%] w-[24%] -rotate-1 rounded-[20px] border-2 border-ink bg-butter" />
         <span className="absolute bottom-[26%] right-[10%] h-[24%] w-[13%] rotate-2 rounded-[18px] border-2 border-ink bg-turquoise" />
-        <CharterWordmark
-          alt=""
+        {/* the wordmark shape is used as a mask so the pastel palette shows through it */}
+        <div
           data-wordmark
-          className="relative h-auto w-[clamp(260px,86vw,1320px)] max-w-full"
+          className="relative w-[clamp(260px,86vw,1320px)] max-w-full opacity-80"
+          style={{
+            aspectRatio: "1057 / 225",
+            backgroundImage:
+              "linear-gradient(100deg, var(--lavender) 0%, var(--turquoise) 18%, var(--mint) 34%, var(--pistachio) 50%, var(--butter) 64%, var(--peach) 78%, var(--blush) 90%, var(--mauve) 100%)",
+            WebkitMaskImage: "url(/charter-wordmark.svg)",
+            maskImage: "url(/charter-wordmark.svg)",
+            WebkitMaskSize: "100% 100%",
+            maskSize: "100% 100%",
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+          }}
         />
 
       </div>
