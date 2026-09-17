@@ -164,7 +164,7 @@ export function Problem() {
       );
 
       cards.forEach((c, i) => {
-        const data = scraps[i];
+        const data = scraps[i % scraps.length]!;
         gsap.fromTo(
           c,
           { ...data.from },
