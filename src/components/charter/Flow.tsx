@@ -154,7 +154,7 @@ export function Flow() {
 
         tl.fromTo(
           card,
-          from[i] ?? from[0],
+          from[i] ?? { x: 0, y: 60, rotate: 0, opacity: 0, scale: 1 },
           {
             x: 0,
             y: 0,
