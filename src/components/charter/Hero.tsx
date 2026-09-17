@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import heroRobot from "@/assets/hero-robot.png.asset.json";
+import heroVideo from "@/assets/hero-robot.mp4.asset.json";
 import { CharterMark, scrollToEarlyAccess } from "./Brand";
 import { gsap, ensureGsap, reducedMotion } from "@/lib/motion";
 
@@ -118,13 +119,18 @@ export function Hero() {
 
         {/* Right: the illustration with layered UI stickers */}
         <div ref={image} className="relative">
-          <img
-            src={heroRobot.url}
-            alt="Illustration of a robot sitting on a boulder, looking out over a wide open plain"
-            width={1456}
-            height={1944}
-            fetchPriority="high"
-            className="mx-auto w-full max-w-[24rem] rounded-[2rem] lg:max-w-[34rem] [mask-image:radial-gradient(120%_105%_at_50%_38%,black_58%,transparent_100%)]"
+          <video
+            src={heroVideo.url}
+            poster={heroRobot.url}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Animation of a robot sitting on a boulder, looking out over a wide open plain"
+            width={1244}
+            height={1664}
+            className="mx-auto block w-full max-w-[24rem] overflow-hidden rounded-[2rem] object-cover object-center lg:max-w-[34rem] [mask-image:radial-gradient(120%_105%_at_50%_38%,black_58%,transparent_100%)]"
           />
 
           <span
