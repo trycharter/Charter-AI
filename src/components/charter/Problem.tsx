@@ -28,7 +28,7 @@ const scraps: Scrap[] = [
     key: "notes",
     label: "Meeting notes",
     tone: "#FFE7AB",
-    pos: "left-[2%] top-[4%]",
+    pos: "left-[1%] top-[2%]",
     rotate: -5,
     depth: 12,
     from: { x: -100, rotate: -14, opacity: 0 },
@@ -38,7 +38,7 @@ const scraps: Scrap[] = [
     key: "files",
     label: "Client files",
     tone: "#C9BBEF",
-    pos: "left-[24%] top-[46%]",
+    pos: "left-[27%] top-[38%]",
     rotate: 4,
     depth: 8,
     from: { y: 80, rotate: 11, opacity: 0 },
@@ -58,7 +58,7 @@ const scraps: Scrap[] = [
     key: "thread",
     label: "Message thread",
     tone: "#A8E0D2",
-    pos: "right-[1%] top-[0%]",
+    pos: "right-[6%] top-[0%]",
     rotate: -3,
     depth: 14,
     from: { x: 100, rotate: 8, opacity: 0 },
@@ -75,7 +75,7 @@ const scraps: Scrap[] = [
     label: "Contract?",
     tone: "#F5C8C4",
     note: "still not written",
-    pos: "right-[6%] top-[42%]",
+    pos: "right-[22%] top-[54%]",
     rotate: 6,
     depth: 10,
     from: { y: 70, scale: 0.85, rotate: 14, opacity: 0 },
@@ -86,7 +86,7 @@ const scraps: Scrap[] = [
     label: "Scope",
     tone: "#FFBE98",
     note: "somewhere in your head",
-    pos: "left-[6%] top-[76%]",
+    pos: "left-[5%] top-[66%]",
     rotate: -7,
     depth: 6,
     from: { scale: 0.85, rotate: -16, opacity: 0 },
@@ -337,7 +337,7 @@ export function Problem() {
       {/* Desktop collage */}
       <div
         data-collage
-        className="pointer-events-auto relative mt-16 hidden h-[30rem] w-full md:block"
+        className="pointer-events-auto relative mt-16 hidden h-[27rem] w-full md:block"
       >
         {scraps.map((s) => (
           <div
