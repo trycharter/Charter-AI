@@ -92,7 +92,7 @@ export function Hero() {
             width={1456}
             height={1944}
             fetchPriority="high"
-            className="mx-auto w-full max-w-[26rem] lg:max-w-none [mask-image:linear-gradient(to_bottom,black_72%,transparent_98%)]"
+            className="mx-auto w-full max-w-[26rem] rounded-[2rem] lg:max-w-none [mask-image:radial-gradient(120%_105%_at_50%_38%,black_58%,transparent_100%)]"
           />
         </div>
       </div>
