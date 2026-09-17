@@ -196,23 +196,23 @@ export function Faq() {
   }
 
   return (
-    <section ref={root} className="mx-auto max-w-[75rem] px-5 py-24 sm:px-8 sm:py-32">
+    <section ref={root} className="shell py-24 sm:py-28">
       <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
         <div>
           <span data-intro className="chip-brut inline-block bg-mauve px-3 py-1 text-[11px] uppercase tracking-[0.2em]">
             Questions, answered.
           </span>
-          <h2 data-intro className="display mt-6 max-w-[16ch] text-[2.1rem] sm:text-[3.4rem]">
+          <h2 data-intro className="display mt-6 max-w-[17ch] text-[clamp(1.9rem,4vw,3rem)]">
             Still figuring out if Charter fits the way you work?
           </h2>
         </div>
-        <p data-intro className="max-w-[40ch] text-[15.5px] leading-[1.8] text-ink-soft sm:text-[17px]">
+        <p data-intro className="max-w-[42ch] text-[15.5px] font-normal leading-[1.8] text-ink-soft sm:text-[16.5px]">
           Here&rsquo;s what most freelancers want to know before trying it — everything you need
           before handing Charter your first client project.
         </p>
       </div>
 
-      <div data-faq-stack className="mx-auto mt-12 flex max-w-[72rem] flex-col gap-4 sm:mt-16 sm:gap-5">
+      <div data-faq-stack className="mx-auto mt-12 flex max-w-[62rem] flex-col gap-3.5 sm:mt-14 sm:gap-4">
         {faqs.map((f, i) => {
           const isOpen = open === i;
           const n = String(i + 1).padStart(2, "0");
@@ -223,7 +223,7 @@ export function Faq() {
               className="group rounded-[22px] border-[2.5px] border-ink transition-[transform,box-shadow,background-color] duration-300 hover:-translate-y-0.5"
               style={{
                 backgroundColor: isOpen ? f.tone : "#FFFDF8",
-                boxShadow: isOpen ? "4px 4px 0px #111111" : "6px 6px 0px #111111",
+                boxShadow: isOpen ? "3px 3px 0px #111111" : "5px 5px 0px #111111",
               }}
             >
               <h3>
@@ -233,7 +233,7 @@ export function Faq() {
                   aria-controls={`faq-panel-${i}`}
                   id={`faq-trigger-${i}`}
                   onClick={() => toggle(i)}
-                  className="flex w-full items-center gap-4 px-4 py-4 text-left sm:gap-5 sm:px-6 sm:py-6"
+                  className="flex w-full items-center gap-4 px-4 py-4 text-left sm:gap-5 sm:px-6 sm:py-5"
                 >
                   <span
                     aria-hidden
@@ -247,7 +247,7 @@ export function Faq() {
                     <span className="hidden sm:block">
                       <Icon i={i} />
                     </span>
-                    <span className="text-[17px] font-bold leading-snug tracking-tight text-ink sm:text-[24px]">
+                    <span className="text-[16.5px] font-semibold leading-snug tracking-tight text-ink sm:text-[20px]">
                       {f.q}
                     </span>
                   </span>
@@ -274,7 +274,7 @@ export function Faq() {
               >
                 <p
                   data-answer
-                  className="mx-4 mb-5 max-w-[68ch] border-t-2 border-ink/15 pt-4 text-[15px] leading-[1.8] text-ink/80 sm:mx-6 sm:mb-7 sm:ml-[4.6rem] sm:text-[17px]"
+                  className="mx-4 mb-5 max-w-[62ch] border-t-2 border-ink/15 pt-4 text-[14.5px] font-normal leading-[1.8] text-ink/80 sm:mx-6 sm:mb-6 sm:ml-[4.6rem] sm:text-[16px]"
                 >
                   {f.a}
                 </p>

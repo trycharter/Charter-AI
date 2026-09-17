@@ -48,23 +48,23 @@ export function FinalCta() {
     <section
       id="early-access"
       ref={ref}
-      className="mx-auto max-w-[68rem] px-5 py-24 text-center sm:px-8 sm:py-36"
+      className="shell-narrow py-24 text-center sm:py-32"
     >
       <span
-        className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border-[3px] border-ink bg-cream"
-        style={{ boxShadow: "6px 6px 0px #111111", transform: "rotate(-3deg)" }}
+        className="mx-auto grid h-14 w-14 place-items-center rounded-2xl border-[2.5px] border-ink bg-cream"
+        style={{ boxShadow: "5px 5px 0px #111111", transform: "rotate(-3deg)" }}
       >
-        <CharterMark className="h-8 w-auto" />
+        <CharterMark className="h-7 w-auto" />
       </span>
 
       <h2
         data-reveal
-        className="display mx-auto mt-10 max-w-[18ch] text-[2.1rem] sm:text-[3.4rem] lg:text-[4rem]"
+        className="display mx-auto mt-10 max-w-[19ch] text-[clamp(2rem,4.3vw,3.3rem)]"
       >
         Your next client project shouldn&rsquo;t start from a blank page.
       </h2>
 
-      <p data-reveal className="mx-auto mt-7 max-w-[46ch] text-[16px] leading-[1.8] text-ink-soft">
+      <p data-reveal className="mx-auto mt-7 max-w-[48ch] text-[15.5px] font-normal leading-[1.8] text-ink-soft">
         Start with the conversation you already had. Charter AI turns it into everything you need to
         move the project forward.
       </p>
@@ -91,10 +91,10 @@ export function FinalCta() {
       {/* Big pastel block sitting behind the signup composition */}
       <div
         data-reveal
-        className="relative mx-auto mt-16 max-w-[44rem] rounded-[28px] border-[3px] border-ink bg-blush/70 px-5 py-10 sm:px-10 sm:py-12"
-        style={{ boxShadow: "10px 10px 0px #111111" }}
+        className="relative mx-auto mt-16 max-w-[40rem] rounded-[26px] border-[2.5px] border-ink bg-blush/70 px-5 py-9 sm:px-10 sm:py-11"
+        style={{ boxShadow: "8px 8px 0px #111111" }}
       >
-        <h3 className="mx-auto max-w-[24ch] text-balance text-[22px] font-extrabold tracking-tight sm:text-[30px]">
+        <h3 className="mx-auto max-w-[24ch] text-balance text-[21px] font-extrabold tracking-tight sm:text-[27px]">
           Be one of the first freelancers to use Charter AI.
         </h3>
 
@@ -133,12 +133,12 @@ export function FinalCta() {
                 onChange={(e) => setEmail(e.target.value)}
                 aria-invalid={error ? true : undefined}
                 aria-describedby={error ? "waitlist-error" : undefined}
-                className="input-brut min-w-0 flex-1 px-5 py-3.5 text-[15px]"
+                className="input-brut min-w-0 flex-1 px-5 py-3 text-[15px]"
               />
               <button
                 type="submit"
                 disabled={state === "loading"}
-                className="btn-brut group shrink-0 px-6 py-3.5 text-[15px] disabled:opacity-60"
+                className="btn-brut group h-[50px] shrink-0 px-7 text-[15px] disabled:opacity-60"
                 style={{ ["--btn-shadow" as string]: "#A0E4E0" }}
               >
                 {state === "loading" ? "Joining…" : "Get Early Access"}

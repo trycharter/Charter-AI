@@ -50,13 +50,13 @@ export function Hero() {
     <section
       id="top"
       ref={root}
-      className="relative isolate min-h-[100svh] overflow-hidden pb-20 pt-28 sm:pt-36"
+      className="relative isolate min-h-[100svh] overflow-hidden pb-24 pt-28 sm:pt-36"
     >
       {/* Ambient canvas tuned to the illustration: soft sky above, warm sand below */}
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,#cfe2e2_0%,#dfe9e1_34%,#f3ead6_64%,#fcf6ed_88%)]" />
       <div className="cream-haze pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[38%]" />
 
-      <div className="mx-auto grid max-w-[84rem] items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-6">
+      <div className="shell grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
         {/* Left: all the words */}
         <div className="relative max-w-[36rem] text-center lg:text-left">
           <p
@@ -69,7 +69,7 @@ export function Hero() {
 
           <h1
             data-hero-step
-            className="display mt-7 text-[2.6rem] text-ink sm:text-[3.7rem] lg:text-[4.4rem]"
+            className="display mt-6 text-[clamp(2.4rem,5.1vw,3.9rem)] leading-[1.02] text-ink"
           >
             Turn{" "}
             <span className="relative inline-block isolate">
@@ -82,11 +82,11 @@ export function Hero() {
             into a project you can actually run.
           </h1>
 
-          <div data-hero-step className="mt-9">
+          <div data-hero-step className="mt-8">
             <button
               type="button"
               onClick={scrollToEarlyAccess}
-              className="btn-brut group px-7 py-3.5 text-[15px]"
+              className="btn-brut group h-[50px] px-7 text-[15px]"
               style={{ ["--btn-shadow" as string]: "#A8E0D2" }}
             >
               Join Waitlist
@@ -94,7 +94,7 @@ export function Hero() {
                 →
               </span>
             </button>
-            <p className="mt-4 text-[12.5px] text-ink-soft/90">
+            <p className="mt-4 max-w-[42ch] text-[13px] font-normal leading-relaxed text-ink-soft/90">
               Early access for freelancers. No spam. Just product updates and invites.
             </p>
           </div>
@@ -124,7 +124,7 @@ export function Hero() {
             width={1456}
             height={1944}
             fetchPriority="high"
-            className="mx-auto w-full max-w-[26rem] rounded-[2rem] lg:max-w-none [mask-image:radial-gradient(120%_105%_at_50%_38%,black_58%,transparent_100%)]"
+            className="mx-auto w-full max-w-[24rem] rounded-[2rem] lg:max-w-[34rem] [mask-image:radial-gradient(120%_105%_at_50%_38%,black_58%,transparent_100%)]"
           />
 
           <span

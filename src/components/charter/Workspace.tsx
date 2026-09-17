@@ -233,19 +233,19 @@ export function Workspace() {
           duration: 0.8,
           ease: "power3.out",
           stagger: 0.1,
-          scrollTrigger: { trigger: el, start: "top 78%", once: true },
+          scrollTrigger: { trigger: el, start: "top 82%", once: true },
         },
       );
 
       const frame = el.querySelector("[data-frame]");
       const tl = gsap.timeline({
-        scrollTrigger: { trigger: frame, start: "top 76%", once: true },
+        scrollTrigger: { trigger: frame, start: "top 80%", once: true },
       });
 
       tl.fromTo(
         frame,
-        { opacity: 0, y: 120, scale: 0.96 },
-        { opacity: 1, y: 0, scale: 1, duration: 1, ease: "power3.out" },
+        { opacity: 0, y: 80, scale: 0.97 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: "power3.out" },
       )
         .fromTo(
           q("[data-side]"),
@@ -320,15 +320,15 @@ export function Workspace() {
   }, []);
 
   return (
-    <section ref={root} className="px-3 pb-24 pt-10 sm:px-6 sm:pb-32">
-      <div className="mx-auto mb-10 max-w-[46rem] text-center sm:mb-14">
+    <section ref={root} className="px-[clamp(16px,4vw,64px)] pb-28 pt-16 sm:pb-36">
+      <div className="mx-auto mb-10 max-w-[44rem] text-center sm:mb-14">
         <span data-intro className="chip-brut inline-block bg-sky px-3 py-1 text-[11px] uppercase tracking-[0.2em]">
           Your project, after Charter
         </span>
-        <h2 data-intro className="display mt-6 text-[2rem] sm:text-[3.2rem]">
+        <h2 data-intro className="display mt-6 text-[clamp(1.9rem,4vw,3.1rem)]">
           A workspace, not a chat window.
         </h2>
-        <p data-intro className="mx-auto mt-5 max-w-[52ch] text-[15px] leading-[1.75] text-ink-soft sm:text-[16.5px]">
+        <p data-intro className="mx-auto mt-5 max-w-[54ch] text-[15px] font-normal leading-[1.8] text-ink-soft sm:text-[16px]">
           Everything Charter learned about the client becomes one connected project — scope,
           documents, deadlines, tasks, decisions and an AI that already understands the engagement.
         </p>
@@ -336,8 +336,8 @@ export function Workspace() {
 
       <div
         data-frame
-        className="mx-auto w-full max-w-[1560px] overflow-hidden rounded-[1.5rem] border-[3px] border-ink bg-card sm:rounded-[2rem]"
-        style={{ boxShadow: "12px 12px 0px #111111" }}
+        className="mx-auto w-full max-w-[1450px] overflow-hidden rounded-[1.5rem] border-[3px] border-ink bg-card sm:rounded-[2rem]"
+        style={{ boxShadow: "10px 10px 0px #111111" }}
       >
         {/* window chrome */}
         <div className="flex items-center gap-2 border-b-2 border-ink bg-cream px-4 py-2.5 sm:px-5 sm:py-3">

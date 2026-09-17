@@ -7,6 +7,12 @@ function ensureGsap() {
   if (typeof window === "undefined") return false;
   if (!registered) {
     gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    ScrollTrigger.defaults({ invalidateOnRefresh: true });
+    // Layout settles after fonts and images land — re-measure then.
+    const refresh = () => ScrollTrigger.refresh();
+    if (document.fonts?.ready) void document.fonts.ready.then(refresh);
+    window.addEventListener("load", refresh, { once: true });
     registered = true;
   }
   return true;
@@ -47,12 +53,12 @@ export function useSceneReveal<T extends HTMLElement>(options?: {
         {
           opacity: 1,
           y: 0,
-          duration: 0.9,
+          duration: 0.8,
           ease: "power3.out",
-          stagger: options?.stagger ?? 0.09,
+          stagger: options?.stagger ?? 0.08,
           scrollTrigger: {
             trigger: el,
-            start: options?.start ?? "top 78%",
+            start: options?.start ?? "top 82%",
             once: true,
           },
         },

@@ -15,7 +15,7 @@ export function Progression() {
   const ref = useSceneReveal<HTMLElement>({ y: 18, stagger: 0.07 });
 
   return (
-    <section ref={ref} className="mx-auto max-w-[84rem] px-5 py-24 sm:px-8 sm:py-32">
+    <section ref={ref} className="shell py-20 sm:py-24">
       <ol className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-2">
         {steps.map((s, i) => (
           <li key={s.label} data-reveal className="flex items-center gap-4 md:flex-col md:gap-3">
@@ -23,7 +23,7 @@ export function Progression() {
               className="brut-hover flex items-center gap-2 rounded-2xl border-2 border-ink px-3.5 py-2 md:flex-col md:px-4 md:py-3"
               style={{
                 backgroundColor: s.tone,
-                boxShadow: "4px 4px 0px #111111",
+                boxShadow: "3px 3px 0px #111111",
                 transform: `rotate(${tilt[i]}deg)`,
               }}
             >
