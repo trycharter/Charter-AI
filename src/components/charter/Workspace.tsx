@@ -186,7 +186,7 @@ function TaskCard({ task }: { task: Task }) {
       {(task.tag || task.due) && (
         <div data-task-meta className="mt-2 flex items-center justify-between gap-2">
           {task.tag ? <Tag label={task.tag} /> : <span />}
-          {task.due && <span className="text-[10.5px] text-ink-soft">{task.due}</span>}
+          {task.due && <span className="whitespace-nowrap text-[10.5px] text-ink-soft">{task.due}</span>}
         </div>
       )}
 
