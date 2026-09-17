@@ -540,18 +540,18 @@ export function Why() {
   }, []);
 
   return (
-    <section ref={root} className="mx-auto max-w-[88rem] px-5 py-24 sm:px-8 sm:py-32">
-      <div className="max-w-[46rem]">
+    <section ref={root} className="shell py-28 sm:py-36">
+      <div className="max-w-[44rem]">
         <span data-intro className="chip-brut inline-block bg-pistachio px-3 py-1 text-[11px] uppercase tracking-[0.2em]">
           Why Charter
         </span>
-        <h2 data-intro className="display mt-6 text-[2.1rem] sm:text-[3.6rem]">
+        <h2 data-intro className="display mt-6 text-[clamp(2rem,4.3vw,3.4rem)]">
           Project management that thinks with you.
         </h2>
-        <p data-intro className="display mt-2 max-w-[22ch] text-[1.6rem] text-ink/40 sm:text-[2.4rem]">
+        <p data-intro className="display mt-2 max-w-[24ch] text-[1.45rem] font-medium text-ink/40 sm:text-[2.1rem]">
           Not another system you have to constantly explain yourself to.
         </p>
-        <p data-intro className="mt-7 max-w-[54ch] text-[15.5px] leading-[1.8] text-ink-soft sm:text-[17px]">
+        <p data-intro className="mt-7 max-w-[56ch] text-[15.5px] font-normal leading-[1.8] text-ink-soft sm:text-[16.5px]">
           Charter carries context across the entire client relationship — learning how you work,
           reasoning across project information and helping move the engagement forward without
           losing the decisions that came before.
@@ -563,8 +563,8 @@ export function Why() {
           <article
             key={c.no}
             data-card
-            className="mx-auto w-full max-w-[86rem] rounded-[28px] border-[3px] border-ink p-5 sm:p-9"
-            style={{ backgroundColor: c.tone, boxShadow: "10px 10px 0px #111111" }}
+            className="mx-auto w-full max-w-[1250px] rounded-[26px] border-[2.5px] border-ink p-6 sm:p-10"
+            style={{ backgroundColor: c.tone, boxShadow: "8px 8px 0px #111111" }}
           >
             <div
               className={`grid items-center gap-7 ${
@@ -584,11 +584,11 @@ export function Why() {
                   </span>
                 </div>
 
-                <h3 className="mt-5 max-w-[22ch] text-[26px] font-extrabold leading-[1.1] tracking-tight text-ink sm:text-[40px]">
+                <h3 className="mt-5 max-w-[22ch] text-[24px] font-extrabold leading-[1.12] tracking-tight text-ink sm:text-[33px]">
                   {c.title}
                 </h3>
 
-                <div className="mt-5 max-w-[56ch] space-y-3 text-[14.5px] leading-[1.75] text-ink/80 sm:text-[16px]">
+                <div className="mt-5 max-w-[58ch] space-y-3 text-[14.5px] font-normal leading-[1.8] text-ink/80 sm:text-[15.5px]">
                   {c.body}
                 </div>
 
