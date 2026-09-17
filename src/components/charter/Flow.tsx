@@ -92,19 +92,18 @@ function Connector({ flip }: { flip?: boolean }) {
         />
       </svg>
       <svg
-        viewBox="0 0 200 120"
-        preserveAspectRatio="none"
-        className="absolute inset-0 h-full w-full"
+        data-arrow
+        viewBox="0 0 24 24"
         fill="none"
+        className="absolute bottom-0 h-4 w-4"
+        style={{ left: flip ? "25%" : "75%", marginLeft: "-0.5rem" }}
       >
         <path
-          data-arrow
-          d={flip ? "M42,104 L50,116 L58,104" : "M142,104 L150,116 L158,104"}
+          d="M4 6 L12 18 L20 6"
           stroke="#111111"
-          strokeWidth="2.5"
+          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
-          vectorEffect="non-scaling-stroke"
         />
       </svg>
     </div>
