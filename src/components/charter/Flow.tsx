@@ -32,7 +32,7 @@ type CardProps = {
 
 function StepCard({ index, tone, category, title, align, width, children, body }: CardProps) {
   return (
-    <div className={`relative ${align} ${width}`}>
+    <div className={`relative w-full ${align} ${width}`}>
       <article
         data-card
         className="relative rounded-[24px] border-[2.5px] border-ink bg-card p-5 pt-7 sm:p-8 sm:pt-9"
