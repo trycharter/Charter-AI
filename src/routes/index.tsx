@@ -1,24 +1,52 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/charter/Nav";
+import { Hero } from "@/components/charter/Hero";
+import { Problem } from "@/components/charter/Problem";
+import { Flow } from "@/components/charter/Flow";
+import { Progression } from "@/components/charter/Progression";
+import { Workspace } from "@/components/charter/Workspace";
+import { Why } from "@/components/charter/Why";
+import { Faq } from "@/components/charter/Faq";
+import { FinalCta } from "@/components/charter/FinalCta";
+import { Footer } from "@/components/charter/Footer";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "Charter AI — AI-Native Project Management for Freelancers";
+const description =
+  "Turn messy client conversations into clear scope, client-ready contracts, actionable tasks and one organized workspace with Charter AI.";
+
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: "Charter AI" },
+      { property: "og:description", content: "AI-native project management for freelancers." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Charter AI" },
+      { name: "twitter:description", content: "AI-native project management for freelancers." },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="relative bg-cream">
+      <Nav />
+      <main>
+        <Hero />
+        <Problem />
+        <Flow />
+        <Progression />
+        <Workspace />
+        <Why />
+        <Faq />
+        <FinalCta />
+      </main>
+      <Footer />
     </div>
   );
 }
