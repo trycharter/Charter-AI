@@ -64,9 +64,9 @@ export function Footer() {
         <CharterWordmark
           alt=""
           data-wordmark
-          className="relative h-auto w-full"
-          style={{ width: "clamp(280px, 90vw, 1500px)" }}
+          className="relative h-auto w-[clamp(280px,90vw,1500px)] max-w-full"
         />
+
       </div>
 
     </footer>
