@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import heroRobot from "@/assets/hero-robot.png.asset.json";
 import heroVideo from "@/assets/hero-robot.mp4.asset.json";
+import heroVideoWebm from "@/assets/hero-robot.webm.asset.json";
 import { CharterMark, scrollToEarlyAccess } from "./Brand";
 import { gsap, ensureGsap, reducedMotion } from "@/lib/motion";
 
@@ -130,7 +131,10 @@ export function Hero() {
             width={1244}
             height={1664}
             className="mx-auto block w-full max-w-[24rem] overflow-hidden rounded-[2rem] object-cover object-center lg:max-w-[34rem] [mask-image:radial-gradient(120%_105%_at_50%_38%,black_58%,transparent_100%)]"
-          />
+          >
+            <source src={heroVideo.url} type="video/mp4" />
+            <source src={heroVideoWebm.url} type="video/webm" />
+          </video>
 
           <span
             data-hero-sticker
