@@ -53,7 +53,7 @@ export function Hero() {
           width={1920}
           height={1200}
           fetchPriority="high"
-          className="h-full w-full object-cover object-[46%_52%]"
+          className="h-full w-full object-cover object-[27%_62%] md:object-[46%_52%]"
         />
         <div className="cream-haze pointer-events-none absolute inset-x-0 bottom-0 h-[62%]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-cream/55 to-transparent" />
