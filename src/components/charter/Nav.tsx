@@ -50,7 +50,6 @@ export function Nav() {
     <header
       className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-3 sm:pt-5"
       style={{
-        animation: "charter-fade-in 0.7s ease-out 0.05s both",
         transform: hidden ? "translateY(-130%)" : "translateY(0)",
         opacity: hidden ? 0 : 1,
         transition: "transform 0.42s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease-out",
@@ -59,8 +58,11 @@ export function Nav() {
     >
       <nav
         aria-label="Primary"
-        className="flex w-full max-w-[46rem] items-center justify-between gap-4 rounded-full border-2 border-ink bg-cream px-3 py-2 transition-shadow duration-300 sm:gap-6 sm:px-4"
-        style={{ boxShadow: scrolled ? "4px 4px 0px #111111" : "2px 2px 0px #111111" }}
+        className="flex w-full max-w-[44rem] items-center justify-between gap-4 rounded-full border-2 border-ink bg-cream px-3 py-2 transition-shadow duration-300 sm:gap-6 sm:px-4"
+        style={{
+          animation: "charter-fade-in 0.7s ease-out 0.05s both",
+          boxShadow: scrolled ? "4px 4px 0px #111111" : "2px 2px 0px #111111",
+        }}
       >
         <a href="#top" className="flex min-w-0 items-center pl-1" aria-label="Charter, home">
           <CharterWordmark className="h-[13px] w-auto sm:h-[15px]" alt="Charter" />
