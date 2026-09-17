@@ -22,7 +22,7 @@ export function Nav() {
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
         scrolled ? "bg-cream/80 backdrop-blur-md" : "bg-transparent"
       }`}
-      style={{ opacity: 0, animation: "fade-in 0.7s ease-out 0.05s forwards" }}
+      style={{ animation: "charter-fade-in 0.7s ease-out 0.05s both" }}
     >
       <nav
         aria-label="Primary"
