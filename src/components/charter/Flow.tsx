@@ -179,6 +179,9 @@ export function Flow() {
       });
 
       connectors.forEach((path, i) => {
+        const svg = path.ownerSVGElement;
+        // a hidden (responsive) connector has no layout box — ScrollTrigger can't measure it
+        if (!svg || svg.getClientRects().length === 0) return;
         const len = path.getTotalLength();
         gsap.set(path, { strokeDasharray: "7 9", strokeDashoffset: len, opacity: 0.85 });
         gsap.to(path, {
