@@ -475,20 +475,20 @@ export function Why() {
           duration: 0.8,
           ease: "power3.out",
           stagger: 0.09,
-          scrollTrigger: { trigger: el, start: "top 78%", once: true },
+          scrollTrigger: { trigger: el, start: "top 82%", once: true },
         },
       );
 
       el.querySelectorAll<HTMLElement>("[data-card]").forEach((card, i) => {
         const odd = i % 2 === 0;
         const tl = gsap.timeline({
-          scrollTrigger: { trigger: card, start: "top 82%", once: true },
+          scrollTrigger: { trigger: card, start: "top 80%", once: true },
         });
 
         tl.fromTo(
           card,
-          { opacity: 0, x: odd ? -60 : 60, y: 80, rotate: odd ? -1.5 : 1.5 },
-          { opacity: 1, x: 0, y: 0, rotate: 0, duration: 0.95, ease: "power3.out" },
+          { opacity: 0, x: odd ? -48 : 48, y: 60, rotate: odd ? -1.2 : 1.2 },
+          { opacity: 1, x: 0, y: 0, rotate: 0, duration: 0.85, ease: "power3.out" },
         )
           .fromTo(
             card.querySelectorAll("[data-viz]"),
@@ -608,18 +608,18 @@ export function Why() {
         <p data-final className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink-soft">
           The old model
         </p>
-        <p data-final className="display mt-2 text-[1.8rem] text-ink/40 sm:text-[2.8rem]">
+        <p data-final className="display mt-2 text-[1.6rem] font-medium text-ink/40 sm:text-[2.4rem]">
           You manage the software.
         </p>
 
         <p data-final className="mt-12 text-[11px] font-bold uppercase tracking-[0.2em] text-ink-soft">
           The Charter model
         </p>
-        <p data-final className="display mt-2 text-[2.2rem] sm:text-[4rem]">
+        <p data-final className="display mt-2 text-[clamp(2rem,4.4vw,3.4rem)]">
           The software understands the work.
         </p>
 
-        <p data-final className="mx-auto mt-10 max-w-[34ch] text-[16px] leading-[1.7] text-ink-soft sm:text-[18px]">
+        <p data-final className="mx-auto mt-10 max-w-[36ch] text-[16px] font-normal leading-[1.75] text-ink-soft sm:text-[17px]">
           You stay focused on the part only you can do.
         </p>
       </div>
