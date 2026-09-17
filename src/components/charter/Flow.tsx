@@ -64,6 +64,18 @@ const outputs: Out[] = [
   },
 ];
 
+const wrapTone = [
+  "#F5C8C4",
+  "#9ECCF0",
+  "#A0E4E0",
+  "#C9BBEF",
+  "#FFE7AB",
+  "#C5DBA9",
+  "#A8E0D2",
+  "#FFBE98",
+];
+const wrapTilt = [-5, 4, -3, 5, -4, 3, -5, 4];
+
 const pct = (x: number, y: number) => ({
   left: `${(x / W) * 100}%`,
   top: `${(y / H) * 100}%`,
@@ -71,14 +83,17 @@ const pct = (x: number, y: number) => ({
 
 function OutputCard({ out }: { out: Out }) {
   return (
-    <div className="card-soft w-[15.5rem] rounded-2xl p-4">
+    <div
+      className="brut-hover w-[15.5rem] rounded-[20px] border-2 border-ink bg-card p-4"
+      style={{ boxShadow: "6px 6px 0px #111111" }}
+    >
       <div className="flex items-center gap-2.5">
         <span
           aria-hidden
-          className="h-6 w-6 rounded-lg"
+          className="h-6 w-6 rounded-lg border-2 border-ink"
           style={{ backgroundColor: out.tone }}
         />
-        <span className="text-[13px] font-semibold tracking-tight text-ink">{out.title}</span>
+        <span className="text-[13px] font-extrabold tracking-tight text-ink">{out.title}</span>
       </div>
 
       <div className="mt-3 space-y-1.5">
@@ -224,8 +239,8 @@ export function Flow() {
               data-line="in"
               d={s.d}
               stroke="#111111"
-              strokeOpacity="0.28"
-              strokeWidth="1.25"
+              strokeOpacity="0.55"
+              strokeWidth="2"
               vectorEffect="non-scaling-stroke"
               strokeLinecap="round"
             />
@@ -236,22 +251,29 @@ export function Flow() {
               data-line="out"
               d={o.d}
               stroke="#111111"
-              strokeOpacity="0.28"
-              strokeWidth="1.25"
+              strokeOpacity="0.7"
+              strokeWidth="2"
               vectorEffect="non-scaling-stroke"
               strokeLinecap="round"
             />
           ))}
         </svg>
 
-        {sources.map((s) => (
+        {sources.map((s, i) => (
           <div
             key={s.name}
             data-source
             className="absolute -translate-x-1/2 -translate-y-1/2"
             style={pct(s.x, s.y)}
           >
-            <div className="card-soft grid h-14 w-14 place-items-center rounded-2xl">
+            <div
+              className="grid h-16 w-16 place-items-center rounded-2xl border-2 border-ink"
+              style={{
+                backgroundColor: wrapTone[i % wrapTone.length],
+                boxShadow: "4px 4px 0px #111111",
+                transform: `rotate(${wrapTilt[i % wrapTilt.length]}deg)`,
+              }}
+            >
               <img src={s.url} alt="" aria-hidden loading="lazy" className="h-8 w-8 object-contain" />
             </div>
             <span className="mt-2 block w-24 text-center text-[11px] leading-tight text-ink-soft/80">
@@ -266,8 +288,8 @@ export function Flow() {
           style={pct(500, 310)}
         >
           <div
-            className="grid h-28 w-28 place-items-center rounded-[2rem]"
-            style={{ background: "var(--cream)", boxShadow: "0 0 0 1px rgb(17 17 17 / .07), 0 30px 60px -32px rgb(201 187 239 / .9)" }}
+            className="grid h-28 w-28 place-items-center rounded-[2rem] border-[3px] border-ink"
+            style={{ background: "var(--cream)", boxShadow: "8px 8px 0px #111111" }}
           >
             <CharterMark className="h-12 w-auto" />
           </div>
@@ -294,8 +316,15 @@ export function Flow() {
       {/* Mobile */}
       <div className="mt-12 md:hidden">
         <div className="grid grid-cols-4 gap-3">
-          {sources.map((s) => (
-            <div key={s.name} className="card-soft grid aspect-square place-items-center rounded-2xl">
+          {sources.map((s, i) => (
+            <div
+              key={s.name}
+              className="grid aspect-square place-items-center rounded-2xl border-2 border-ink"
+              style={{
+                backgroundColor: wrapTone[i % wrapTone.length],
+                boxShadow: "3px 3px 0px #111111",
+              }}
+            >
               <img src={s.url} alt={s.name} loading="lazy" className="h-7 w-7 object-contain" />
             </div>
           ))}
@@ -306,8 +335,8 @@ export function Flow() {
             ↓
           </span>
           <div
-            className="mt-5 grid h-20 w-20 place-items-center rounded-3xl"
-            style={{ background: "var(--cream)", boxShadow: "0 0 0 1px rgb(17 17 17 / .07), 0 24px 44px -28px rgb(201 187 239 / .9)" }}
+            className="mt-5 grid h-20 w-20 place-items-center rounded-3xl border-[3px] border-ink"
+            style={{ background: "var(--cream)", boxShadow: "6px 6px 0px #111111" }}
           >
             <CharterMark className="h-9 w-auto" />
           </div>
