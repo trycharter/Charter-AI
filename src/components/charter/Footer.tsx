@@ -58,13 +58,10 @@ export function Footer() {
       </div>
 
       <div aria-hidden className="relative -mb-[2vw] flex select-none justify-center px-[5vw]">
-        {/* pastel block sitting behind part of the oversized wordmark */}
-        <span className="absolute bottom-[12%] left-[7%] h-[42%] w-[24%] -rotate-1 rounded-[20px] border-2 border-ink bg-butter" />
-        <span className="absolute bottom-[26%] right-[10%] h-[24%] w-[13%] rotate-2 rounded-[18px] border-2 border-ink bg-turquoise" />
         {/* the wordmark shape is used as a mask so the pastel palette shows through it */}
         <div
           data-wordmark
-          className="relative w-[clamp(260px,86vw,1320px)] max-w-full opacity-80"
+          className="relative w-[clamp(260px,86vw,1320px)] max-w-full"
           style={{
             aspectRatio: "1057 / 225",
             backgroundImage:

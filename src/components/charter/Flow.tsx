@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { CharterMark } from "./Brand";
+import { WaitlistCta } from "./WaitlistCta";
 import { gsap, ensureGsap, reducedMotion } from "@/lib/motion";
 
 /* ------------------------------------------------------------------ */
@@ -179,13 +180,16 @@ export function Flow() {
       });
 
       connectors.forEach((path, i) => {
+        const svg = path.ownerSVGElement;
+        // a hidden (responsive) connector has no layout box — ScrollTrigger can't measure it
+        if (!svg || svg.getClientRects().length === 0) return;
         const len = path.getTotalLength();
         gsap.set(path, { strokeDasharray: "7 9", strokeDashoffset: len, opacity: 0.85 });
         gsap.to(path, {
           strokeDashoffset: 0,
           duration: 1,
           ease: "none",
-          scrollTrigger: { trigger: path.ownerSVGElement, start: "top 85%", once: true },
+          scrollTrigger: { trigger: svg, start: "top 85%", once: true },
         });
         const arrow = arrows[i];
         if (arrow) {
@@ -198,7 +202,7 @@ export function Flow() {
               duration: 0.35,
               delay: 0.7,
               ease: "power2.out",
-              scrollTrigger: { trigger: path.ownerSVGElement, start: "top 85%", once: true },
+              scrollTrigger: { trigger: svg, start: "top 85%", once: true },
             },
           );
         }
@@ -546,6 +550,8 @@ export function Flow() {
             ))}
           </ul>
         </StepCard>
+
+        <WaitlistCta shadow="#A8E0D2" />
       </div>
     </section>
   );

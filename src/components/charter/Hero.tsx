@@ -96,6 +96,12 @@ export function Hero() {
                 →
               </span>
             </button>
+            <span
+              className="chip-brut ml-0 mt-4 flex w-fit bg-blush px-3.5 py-1.5 text-[11.5px] uppercase tracking-[0.14em] lg:ml-3 lg:mt-0 lg:inline-flex"
+              style={{ boxShadow: "3px 3px 0px #111111" }}
+            >
+              Only 100 spots
+            </span>
             <p className="mt-4 max-w-[42ch] text-[13px] font-normal leading-relaxed text-ink-soft/90">
               Early access for freelancers. No spam. Just product updates and invites.
             </p>
