@@ -35,8 +35,8 @@ function StepCard({ index, tone, category, title, align, width, children, body }
     <div className={`relative ${align} ${width}`}>
       <article
         data-card
-        className="relative rounded-[26px] border-[3px] border-ink bg-card p-5 pt-7 sm:p-8 sm:pt-9"
-        style={{ boxShadow: "10px 10px 0px #111111" }}
+        className="relative rounded-[24px] border-[2.5px] border-ink bg-card p-5 pt-7 sm:p-8 sm:pt-9"
+        style={{ boxShadow: "8px 8px 0px #111111" }}
       >
         <Pin tone={tone} />
 
@@ -49,11 +49,11 @@ function StepCard({ index, tone, category, title, align, width, children, body }
           </span>
         </div>
 
-        <h3 className="mt-3 max-w-[20ch] text-[24px] font-extrabold leading-[1.12] tracking-tight text-ink sm:text-[32px]">
+        <h3 className="mt-3 max-w-[22ch] text-[22px] font-bold leading-[1.14] tracking-tight text-ink sm:text-[28px]">
           {title}
         </h3>
 
-        <div className="mt-4 max-w-[52ch] space-y-3 text-[14.5px] leading-[1.7] text-ink-soft sm:text-[15.5px]">
+        <div className="mt-4 max-w-[54ch] space-y-3 text-[14.5px] font-normal leading-[1.75] text-ink-soft sm:text-[15.5px]">
           {body}
         </div>
 
@@ -212,16 +212,16 @@ export function Flow() {
     <section
       id="how-it-works"
       ref={root}
-      className="mx-auto max-w-[84rem] overflow-hidden px-5 pb-10 pt-20 sm:px-8 sm:pt-28"
+      className="shell overflow-hidden pb-12 pt-24 sm:pt-32"
     >
-      <div className="max-w-[46rem]">
+      <div className="max-w-[44rem]">
         <span className="chip-brut bg-butter px-3 py-1 text-[11px] uppercase tracking-[0.2em]">
           How Charter works
         </span>
-        <h2 className="display mt-6 text-[2rem] sm:text-[3.2rem]">
+        <h2 className="display mt-6 text-[clamp(1.9rem,4vw,3.1rem)]">
           From client call to a project you can actually run.
         </h2>
-        <p className="mt-5 max-w-[50ch] text-[15.5px] leading-[1.75] text-ink-soft sm:text-[17px]">
+        <p className="mt-5 max-w-[52ch] text-[15.5px] font-normal leading-[1.8] text-ink-soft sm:text-[16.5px]">
           Charter takes the messy information around a client project and turns it into the
           documents, decisions and work you need to move forward.
         </p>
