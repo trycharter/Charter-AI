@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CharterMark, CharterWordmark, scrollToEarlyAccess } from "./Brand";
+import { CharterWordmark, scrollToEarlyAccess } from "./Brand";
 
 const links = [
   { label: "About", href: "#about" },
@@ -19,71 +19,63 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-        scrolled ? "bg-cream/80 backdrop-blur-md" : "bg-transparent"
-      }`}
+      className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-3 sm:pt-4"
       style={{ animation: "charter-fade-in 0.7s ease-out 0.05s both" }}
     >
       <nav
         aria-label="Primary"
-        className="mx-auto flex max-w-[84rem] items-center justify-between gap-6 px-5 py-4 sm:px-8 sm:py-5"
+        className={`flex w-full max-w-[44rem] items-center justify-between gap-4 rounded-full border border-ink/10 px-3 py-1.5 backdrop-blur-xl transition-colors duration-500 sm:gap-6 sm:px-4 sm:py-2 ${
+          scrolled ? "bg-cream/75 shadow-[0_8px_30px_-18px_rgb(17_17_17/0.45)]" : "bg-cream/40"
+        }`}
       >
-        <a href="#top" className="flex min-w-0 items-center gap-2.5" aria-label="Charter AI, home">
-          <CharterMark className="h-7 w-auto shrink-0 sm:h-8" />
-          <CharterWordmark className="h-4 w-auto sm:h-[18px]" alt="Charter" />
+        <a href="#top" className="flex min-w-0 items-center" aria-label="Charter, home">
+          <CharterWordmark className="h-[13px] w-auto sm:h-[15px]" alt="Charter" />
         </a>
 
-        <div className="hidden items-center gap-10 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
-              className="text-[15px] font-medium text-ink/70 transition-colors duration-300 hover:text-ink"
+              className="text-[13.5px] font-medium text-ink/70 transition-colors duration-300 hover:text-ink"
             >
               {l.label}
             </a>
           ))}
-          <button
-            type="button"
-            onClick={scrollToEarlyAccess}
-            className="rounded-full bg-ink px-5 py-2.5 text-[14px] font-medium text-cream transition-transform duration-300 hover:scale-[1.03]"
-          >
-            Get Early Access
-          </button>
         </div>
 
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={scrollToEarlyAccess}
-            className="rounded-full bg-ink px-4 py-2 text-[13px] font-medium text-cream"
+            className="rounded-full bg-ink px-4 py-2 text-[13px] font-medium text-cream transition-transform duration-300 hover:scale-[1.03]"
           >
-            Early Access
+            Join Waitlist
           </button>
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-ink/15"
+            className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-ink/15 md:hidden"
           >
             <span className="sr-only">Menu</span>
             <span aria-hidden className="flex flex-col gap-[5px]">
-              <span className="block h-[1.5px] w-4 bg-ink" />
-              <span className="block h-[1.5px] w-4 bg-ink" />
+              <span className="block h-[1.5px] w-3.5 bg-ink" />
+              <span className="block h-[1.5px] w-3.5 bg-ink" />
             </span>
           </button>
         </div>
       </nav>
 
       {open && (
-        <div className="border-t border-ink/10 bg-cream/95 px-5 py-4 backdrop-blur md:hidden">
+        <div className="absolute inset-x-4 top-[4.2rem] rounded-2xl border border-ink/10 bg-cream/95 px-5 py-3 backdrop-blur md:hidden">
           {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block py-2.5 text-[17px] font-medium text-ink"
+              className="block py-2 text-[16px] font-medium text-ink"
             >
               {l.label}
             </a>
