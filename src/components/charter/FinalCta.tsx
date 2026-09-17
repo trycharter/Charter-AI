@@ -69,7 +69,7 @@ export function FinalCta() {
       </ul>
 
       <div data-reveal className="mx-auto mt-20 max-w-[36rem]">
-        <h3 className="text-[22px] font-bold tracking-tight sm:text-[28px]">
+        <h3 className="mx-auto max-w-[24ch] text-balance text-[22px] font-bold tracking-tight sm:text-[28px]">
           Be one of the first freelancers to use Charter AI.
         </h3>
 
