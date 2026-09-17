@@ -351,7 +351,7 @@ export function Workspace() {
 
         <div className="grid lg:grid-cols-[19%_minmax(0,1fr)_22%]">
           {/* ---------------- sidebar ---------------- */}
-          <aside className="border-b-2 border-ink bg-cream p-4 lg:border-b-0 lg:border-r-2">
+          <aside className="min-w-0 border-b-2 border-ink bg-cream p-4 lg:border-b-0 lg:border-r-2">
             <div data-side className="flex items-center gap-2">
               <CharterMark className="h-5 w-auto" />
               <span className="text-[11.5px] font-bold uppercase tracking-[0.18em]">Charter</span>
@@ -371,7 +371,7 @@ export function Workspace() {
               </span>
             </div>
 
-            <nav aria-label="Project" className="mt-4 flex gap-2 overflow-x-auto lg:block lg:overflow-visible">
+            <nav aria-label="Project" className="mt-4 flex max-w-full gap-2 overflow-x-auto pb-1 lg:block lg:overflow-visible">
               {NAV.map((n) => {
                 const on = n === active;
                 return (
@@ -600,7 +600,7 @@ export function Workspace() {
           </div>
 
           {/* ---------------- AI panel ---------------- */}
-          <aside data-ai className="border-t-2 border-ink bg-cream p-4 lg:border-l-2 lg:border-t-0">
+          <aside data-ai className="min-w-0 border-t-2 border-ink bg-cream p-4 lg:border-l-2 lg:border-t-0">
             <div className="flex items-center gap-2">
               <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-ink bg-card">
                 <CharterMark className="h-3.5 w-auto" />
