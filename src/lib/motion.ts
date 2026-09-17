@@ -7,6 +7,12 @@ function ensureGsap() {
   if (typeof window === "undefined") return false;
   if (!registered) {
     gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    ScrollTrigger.defaults({ invalidateOnRefresh: true });
+    // Layout settles after fonts and images land — re-measure then.
+    const refresh = () => ScrollTrigger.refresh();
+    if (document.fonts?.ready) void document.fonts.ready.then(refresh);
+    window.addEventListener("load", refresh, { once: true });
     registered = true;
   }
   return true;
