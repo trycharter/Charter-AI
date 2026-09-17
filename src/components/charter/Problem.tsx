@@ -223,11 +223,10 @@ export function Problem() {
           const r = collage.getBoundingClientRect();
           const nx = (e.clientX - r.left) / r.width - 0.5;
           const ny = (e.clientY - r.top) / r.height - 0.5;
-          cards.forEach((c, i) => {
-            const d = scraps[i].depth;
-            setters[i].x(-nx * d);
-            setters[i].y(-ny * d);
-            c.style.setProperty("transform", "");
+          cards.forEach((_c, i) => {
+            const d = scraps[i % scraps.length]!.depth;
+            setters[i]!.x(-nx * d);
+            setters[i]!.y(-ny * d);
           });
         };
         collage.addEventListener("pointermove", onMove);
