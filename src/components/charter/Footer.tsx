@@ -1,25 +1,71 @@
+import { useEffect, useRef } from "react";
 import { CharterWordmark } from "./Brand";
+import { gsap, ensureGsap, reducedMotion } from "@/lib/motion";
+
+const socials = [
+  { label: "X / Twitter", href: "https://x.com", tone: "var(--sky)" },
+  { label: "Instagram", href: "https://instagram.com", tone: "var(--mauve)" },
+  { label: "Privacy", href: "#top", tone: "var(--pistachio)" },
+];
 
 export function Footer() {
+  const root = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const el = root.current;
+    if (!el || !ensureGsap()) return;
+    const mark = el.querySelector<HTMLElement>("[data-wordmark]");
+    if (!mark) return;
+
+    if (reducedMotion()) {
+      gsap.set(mark, { opacity: 1, y: 0 });
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        mark,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 88%", once: true },
+        },
+      );
+    }, el);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <footer className="relative overflow-hidden pt-16">
+    <footer ref={root} className="relative overflow-hidden pt-16">
       <div className="mx-auto flex max-w-[84rem] flex-wrap items-center justify-between gap-4 px-5 pb-10 text-[13px] text-ink-soft sm:px-8">
-        <p>© {new Date().getFullYear()} Charter AI</p>
-        <nav aria-label="Footer" className="flex items-center gap-6">
-          <a href="https://x.com" className="transition-opacity hover:opacity-60">
-            X / Twitter
-          </a>
-          <a href="https://instagram.com" className="transition-opacity hover:opacity-60">
-            Instagram
-          </a>
-          <a href="#top" className="transition-opacity hover:opacity-60">
-            Privacy
-          </a>
+        <p className="font-semibold text-ink">© {new Date().getFullYear()} Charter AI</p>
+        <nav aria-label="Footer" className="flex flex-wrap items-center gap-3">
+          {socials.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              className="btn-brut-soft px-4 py-2 text-[12.5px]"
+              style={{ backgroundColor: s.tone }}
+            >
+              {s.label}
+            </a>
+          ))}
         </nav>
       </div>
 
       <div aria-hidden className="relative -mb-[3vw] select-none px-0">
-        <CharterWordmark alt="" className="w-[112%] max-w-none -translate-x-[6%]" />
+        {/* pastel block sitting behind part of the oversized wordmark */}
+        <span className="absolute bottom-[12%] left-[4%] h-[42%] w-[26%] -rotate-1 rounded-[20px] border-2 border-ink bg-butter" />
+        <span className="absolute bottom-[26%] right-[8%] h-[24%] w-[14%] rotate-2 rounded-[18px] border-2 border-ink bg-turquoise" />
+        <CharterWordmark
+          alt=""
+          data-wordmark
+          className="relative w-[112%] max-w-none -translate-x-[6%]"
+        />
       </div>
     </footer>
   );
