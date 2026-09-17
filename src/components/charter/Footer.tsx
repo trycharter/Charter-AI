@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { CharterWordmark } from "./Brand";
+
 import { gsap, ensureGsap, reducedMotion } from "@/lib/motion";
 
 const socials = [
