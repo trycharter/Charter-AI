@@ -53,12 +53,12 @@ export function useSceneReveal<T extends HTMLElement>(options?: {
         {
           opacity: 1,
           y: 0,
-          duration: 0.9,
+          duration: 0.8,
           ease: "power3.out",
-          stagger: options?.stagger ?? 0.09,
+          stagger: options?.stagger ?? 0.08,
           scrollTrigger: {
             trigger: el,
-            start: options?.start ?? "top 78%",
+            start: options?.start ?? "top 82%",
             once: true,
           },
         },
