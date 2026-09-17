@@ -166,3 +166,14 @@
   border: 1px solid rgb(17 17 17 / 0.07);
   box-shadow: 0 1px 2px rgb(17 17 17 / 0.03), 0 18px 40px -28px rgb(17 17 17 / 0.28);
 }
+
+@keyframes charter-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
