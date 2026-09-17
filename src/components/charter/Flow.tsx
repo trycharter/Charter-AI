@@ -188,7 +188,7 @@ export function Flow() {
           strokeDashoffset: 0,
           duration: 1,
           ease: "none",
-          scrollTrigger: { trigger: path.ownerSVGElement, start: "top 85%", once: true },
+          scrollTrigger: { trigger: svg, start: "top 85%", once: true },
         });
         const arrow = arrows[i];
         if (arrow) {
@@ -201,7 +201,7 @@ export function Flow() {
               duration: 0.35,
               delay: 0.7,
               ease: "power2.out",
-              scrollTrigger: { trigger: path.ownerSVGElement, start: "top 85%", once: true },
+              scrollTrigger: { trigger: svg, start: "top 85%", once: true },
             },
           );
         }
