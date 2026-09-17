@@ -174,32 +174,33 @@ export function Problem() {
             scale: 1,
             rotate: 0,
             opacity: 1,
-            duration: 0.85,
-            delay: i * 0.1,
+            duration: 0.75,
+            delay: (i % scraps.length) * 0.08,
             ease: "power3.out",
-            scrollTrigger: { trigger: el, start: "top 55%", once: true },
+            scrollTrigger: { trigger: c, start: "top 88%", once: true },
           },
         );
       });
 
-      gsap.to(paths, {
-        strokeDashoffset: 0,
-        duration: 1.1,
-        ease: "power2.inOut",
-        stagger: 0.18,
-        scrollTrigger: { trigger: el, start: "top 42%", once: true },
+      paths.forEach((p) => {
+        gsap.to(p, {
+          strokeDashoffset: 0,
+          duration: 1,
+          ease: "power2.inOut",
+          scrollTrigger: { trigger: p.ownerSVGElement ?? el, start: "top 80%", once: true },
+        });
       });
 
       gsap.fromTo(
         copy,
-        { opacity: 0, y: 34 },
+        { opacity: 0, y: 28 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.9,
+          duration: 0.7,
           ease: "power3.out",
-          stagger: 0.14,
-          scrollTrigger: { trigger: el, start: "top 34%", once: true },
+          stagger: 0.1,
+          scrollTrigger: { trigger: copy[0] ?? el, start: "top 86%", once: true },
         },
       );
 
