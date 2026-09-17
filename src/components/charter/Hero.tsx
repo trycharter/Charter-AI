@@ -1,7 +1,4 @@
 import { useEffect, useRef } from "react";
-import heroRobot from "@/assets/hero-robot.png.asset.json";
-import heroVideo from "@/assets/hero-robot.mp4.asset.json";
-import heroVideoWebm from "@/assets/hero-robot.webm.asset.json";
 import { CharterMark, scrollToEarlyAccess } from "./Brand";
 import { gsap, ensureGsap, reducedMotion } from "@/lib/motion";
 
@@ -127,7 +124,7 @@ export function Hero() {
         {/* Right: the illustration with layered UI stickers */}
         <div ref={image} className="relative">
           <video
-            poster={heroRobot.url}
+            poster="/hero-robot.png"
             autoPlay
             muted
             loop
@@ -138,8 +135,8 @@ export function Hero() {
             height={1664}
             className="mx-auto block w-full max-w-[24rem] overflow-hidden rounded-[2rem] object-cover object-center lg:max-w-[34rem] [mask-image:radial-gradient(120%_105%_at_50%_38%,black_58%,transparent_100%)]"
           >
-            <source src={heroVideo.url} type="video/mp4" />
-            <source src={heroVideoWebm.url} type="video/webm" />
+            <source src="/hero-robot.mp4" type="video/mp4" />
+            <source src="/hero-robot.webm" type="video/webm" />
           </video>
 
           <span
