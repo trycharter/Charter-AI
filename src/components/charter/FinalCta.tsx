@@ -94,6 +94,13 @@ export function FinalCta() {
         className="relative mx-auto mt-16 max-w-[40rem] rounded-[26px] border-[2.5px] border-ink bg-blush/70 px-5 py-9 sm:px-10 sm:py-11"
         style={{ boxShadow: "8px 8px 0px #111111" }}
       >
+        <span
+          className="chip-brut mx-auto mb-5 flex w-fit -rotate-1 items-center gap-2 bg-butter px-4 py-1.5 text-[11.5px] uppercase tracking-[0.14em]"
+          style={{ boxShadow: "3px 3px 0px #111111" }}
+        >
+          Only 100 waitlist spots
+        </span>
+
         <h3 className="mx-auto max-w-[24ch] text-balance text-[21px] font-extrabold tracking-tight sm:text-[27px]">
           Be one of the first freelancers to use Charter AI.
         </h3>
@@ -141,7 +148,7 @@ export function FinalCta() {
                 className="btn-brut group h-[50px] shrink-0 px-7 text-[15px] disabled:opacity-60"
                 style={{ ["--btn-shadow" as string]: "#A0E4E0" }}
               >
-                {state === "loading" ? "Joining…" : "Get Early Access"}
+                {state === "loading" ? "Joining…" : "Join Waitlist"}
                 <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
