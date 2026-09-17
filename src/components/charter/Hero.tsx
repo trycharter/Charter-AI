@@ -120,7 +120,6 @@ export function Hero() {
         {/* Right: the illustration with layered UI stickers */}
         <div ref={image} className="relative">
           <video
-            src={heroVideo.url}
             poster={heroRobot.url}
             autoPlay
             muted
