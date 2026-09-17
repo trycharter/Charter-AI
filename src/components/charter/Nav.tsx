@@ -8,10 +8,39 @@ const links = [
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    let last = window.scrollY;
+    let anchor = window.scrollY;
+    let up = false;
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 80);
+
+      const goingUp = y < last;
+      if (goingUp !== up) {
+        up = goingUp;
+        anchor = y;
+      }
+      last = y;
+
+      if (y < 100) {
+        setHidden(false);
+        setOpen(false);
+        return;
+      }
+      // direction threshold keeps it from flickering on tiny scrolls
+      if (!goingUp && y - anchor > 40) {
+        setHidden(true);
+        setOpen(false);
+      } else if (goingUp && anchor - y > 120) {
+        setHidden(false);
+      }
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -20,7 +49,13 @@ export function Nav() {
   return (
     <header
       className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-3 sm:pt-5"
-      style={{ animation: "charter-fade-in 0.7s ease-out 0.05s both" }}
+      style={{
+        animation: "charter-fade-in 0.7s ease-out 0.05s both",
+        transform: hidden ? "translateY(-130%)" : "translateY(0)",
+        opacity: hidden ? 0 : 1,
+        transition: "transform 0.42s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease-out",
+        pointerEvents: hidden ? "none" : undefined,
+      }}
     >
       <nav
         aria-label="Primary"
