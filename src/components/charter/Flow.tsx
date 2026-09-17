@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { CharterMark } from "./Brand";
+import { WaitlistCta } from "./WaitlistCta";
 import { gsap, ensureGsap, reducedMotion } from "@/lib/motion";
 
 /* ------------------------------------------------------------------ */
@@ -549,6 +550,8 @@ export function Flow() {
             ))}
           </ul>
         </StepCard>
+
+        <WaitlistCta shadow="#A8E0D2" />
       </div>
     </section>
   );

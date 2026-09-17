@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { CharterMark } from "./Brand";
+import { WaitlistCta } from "./WaitlistCta";
 import { gsap, ensureGsap, reducedMotion } from "@/lib/motion";
 
 /* ------------------------------------------------------------------ */
@@ -622,6 +623,8 @@ export function Why() {
         <p data-final className="mx-auto mt-10 max-w-[36ch] text-[16px] font-normal leading-[1.75] text-ink-soft sm:text-[17px]">
           You stay focused on the part only you can do.
         </p>
+
+        <WaitlistCta shadow="#FFE7AB" />
       </div>
     </section>
   );
