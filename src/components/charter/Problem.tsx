@@ -359,7 +359,7 @@ export function Problem() {
         >
           <path
             data-draw
-            d="M215,110 C300,150 330,210 300,255"
+            d="M215,105 C290,140 320,175 312,205"
             stroke="#111111"
             strokeWidth="2"
             strokeLinecap="round"
@@ -367,7 +367,7 @@ export function Problem() {
           />
           <path
             data-draw
-            d="M292,244 l10,16 l-19,3"
+            d="M304,196 l8,14 l-17,2"
             stroke="#111111"
             strokeWidth="2"
             strokeLinecap="round"
@@ -375,7 +375,7 @@ export function Problem() {
           />
           <path
             data-draw
-            d="M760,140 C700,200 700,230 740,262"
+            d="M760,150 C706,200 690,225 700,250"
             stroke="#111111"
             strokeWidth="2"
             strokeLinecap="round"
