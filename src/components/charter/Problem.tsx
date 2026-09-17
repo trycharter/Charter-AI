@@ -282,11 +282,11 @@ export function Problem() {
               Turning it into a contract
               <br />
               takes you{" "}
-              <span className="relative inline-block">
+              <span className="relative isolate inline-block">
                 <span className="relative z-10">an hour.</span>
                 <span
                   aria-hidden
-                  className="absolute inset-x-[-4px] bottom-[6%] -z-0 h-[36%] -rotate-1 rounded-[4px] border-2 border-ink"
+                  className="absolute inset-x-[-6px] bottom-[10%] -z-10 h-[26%] -rotate-1 rounded-[4px]"
                   style={{ backgroundColor: "#F59C9A" }}
                 />
               </span>
