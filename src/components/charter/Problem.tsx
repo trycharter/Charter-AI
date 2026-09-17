@@ -242,7 +242,7 @@ export function Problem() {
     <section
       id="about"
       ref={root}
-      className="relative mx-auto max-w-[84rem] overflow-hidden px-5 pb-24 pt-14 sm:px-8 sm:pb-36 sm:pt-24"
+      className="shell relative overflow-hidden pb-24 pt-16 sm:pb-36 sm:pt-28"
     >
       {/* doodle accents */}
       <svg
@@ -271,11 +271,11 @@ export function Problem() {
             the freelancer gap
           </span>
 
-          <h2 className="display mt-6 text-[2.1rem] leading-[1.02] sm:text-[3.4rem] lg:text-[4.3rem]">
-            <span data-head className="block font-semibold text-ink/50">
+          <h2 className="display mt-6 text-[clamp(2rem,4.4vw,3.6rem)] leading-[1.04]">
+            <span data-head className="block font-medium text-ink/45">
               Your client gave you everything
             </span>
-            <span data-head className="block font-semibold text-ink/50">
+            <span data-head className="block font-medium text-ink/45">
               in a 20-minute call.
             </span>
             <span data-punch className="mt-4 block font-extrabold text-ink">
@@ -304,19 +304,20 @@ export function Problem() {
 
         {/* Supporting copy + statement */}
         <div className="relative z-10 flex flex-col justify-end gap-6 lg:pb-6">
-          <p data-copy className="max-w-[34ch] text-[16px] leading-[1.75] text-ink-soft sm:text-[17px]">
+          <p data-copy className="max-w-[38ch] text-[15.5px] font-normal leading-[1.8] text-ink-soft sm:text-[16.5px]">
             Scattered notes. Scattered files. A scope that only exists in your head and a
             half-finished message thread.
           </p>
-          <p data-copy className="max-w-[32ch] text-[18px] font-semibold leading-[1.5] text-ink sm:text-[20px]">
+          <p data-copy className="max-w-[34ch] text-[17px] font-semibold leading-[1.55] text-ink sm:text-[18.5px]">
             The information was never the problem — organizing it always is.
           </p>
 
           <div
             data-copy
-            className="brut-lg relative w-full max-w-[26rem] rotate-[-1.5deg] rounded-[18px] bg-[#C5DBA9] p-5"
+            className="relative w-full max-w-[24rem] rotate-[-1.5deg] rounded-[18px] border-[2.5px] border-ink bg-[#C5DBA9] p-5"
+            style={{ boxShadow: "7px 7px 0px #111111" }}
           >
-            <p className="text-[20px] font-extrabold leading-[1.2] tracking-tight text-ink sm:text-[24px]">
+            <p className="text-[19px] font-extrabold leading-[1.2] tracking-tight text-ink sm:text-[22px]">
               Charter closes that gap.
             </p>
             <p className="accent-serif mt-2 text-[19px] italic leading-snug text-ink">
