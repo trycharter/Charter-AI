@@ -41,7 +41,7 @@ export function Footer() {
 
   return (
     <footer ref={root} className="relative overflow-hidden pt-16">
-      <div className="mx-auto flex max-w-[84rem] flex-wrap items-center justify-between gap-4 px-5 pb-10 text-[13px] text-ink-soft sm:px-8">
+      <div className="shell flex flex-wrap items-center justify-between gap-4 pb-10 text-[13px] text-ink-soft">
         <p className="font-semibold text-ink">© {new Date().getFullYear()} Charter AI</p>
         <nav aria-label="Footer" className="flex flex-wrap items-center gap-3">
           {socials.map((s) => (
@@ -57,14 +57,14 @@ export function Footer() {
         </nav>
       </div>
 
-      <div aria-hidden className="relative -mb-[2vw] flex select-none justify-center px-[4vw]">
+      <div aria-hidden className="relative -mb-[2vw] flex select-none justify-center px-[5vw]">
         {/* pastel block sitting behind part of the oversized wordmark */}
         <span className="absolute bottom-[12%] left-[7%] h-[42%] w-[24%] -rotate-1 rounded-[20px] border-2 border-ink bg-butter" />
         <span className="absolute bottom-[26%] right-[10%] h-[24%] w-[13%] rotate-2 rounded-[18px] border-2 border-ink bg-turquoise" />
         <CharterWordmark
           alt=""
           data-wordmark
-          className="relative h-auto w-[clamp(280px,90vw,1500px)] max-w-full"
+          className="relative h-auto w-[clamp(260px,86vw,1320px)] max-w-full"
         />
 
       </div>
