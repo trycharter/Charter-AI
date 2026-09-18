@@ -3,9 +3,14 @@ import { useEffect, useRef } from "react";
 import { gsap, ensureGsap, reducedMotion } from "@/lib/motion";
 
 const socials = [
-  { label: "X / Twitter", href: "https://x.com", tone: "var(--sky)" },
-  { label: "Instagram", href: "https://instagram.com", tone: "var(--mauve)" },
-  { label: "Privacy", href: "#top", tone: "var(--pistachio)" },
+  { label: "X / Twitter", href: "https://x.com/trycharterai", tone: "var(--sky)", external: true },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/trycharter.ai",
+    tone: "var(--mauve)",
+    external: true,
+  },
+  { label: "Privacy", href: "#top", tone: "var(--pistachio)", external: false },
 ];
 
 export function Footer() {
@@ -48,6 +53,7 @@ export function Footer() {
             <a
               key={s.label}
               href={s.href}
+              {...(s.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="btn-brut-soft px-4 py-2 text-[12.5px]"
               style={{ backgroundColor: s.tone }}
             >
