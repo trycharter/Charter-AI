@@ -53,6 +53,7 @@ export function Footer() {
             <a
               key={s.label}
               href={s.href}
+              {...(s.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="btn-brut-soft px-4 py-2 text-[12.5px]"
               style={{ backgroundColor: s.tone }}
             >
