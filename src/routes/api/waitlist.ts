@@ -14,8 +14,6 @@ const WaitlistSchema = z.object({
     .max(254),
 
   turnstileToken: z.string().min(1).max(4096),
-
-  website: z.string().max(200).optional().default(''),
 })
 
 function jsonResponse(
@@ -171,18 +169,9 @@ export const Route = createFileRoute(
             name,
             email,
             turnstileToken,
-            website,
           } = parsed.data
 
-          if (website) {
-            console.warn(
-              'Waitlist honeypot triggered',
-            )
 
-            return jsonResponse({
-              success: true,
-            })
-          }
 
           const human =
             await verifyTurnstile(
