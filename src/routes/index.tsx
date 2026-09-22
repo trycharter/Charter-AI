@@ -9,6 +9,7 @@ import { Why } from "@/components/charter/Why";
 import { Faq } from "@/components/charter/Faq";
 import { FinalCta } from "@/components/charter/FinalCta";
 import { Footer } from "@/components/charter/Footer";
+import { WaitlistDialog } from "@/components/charter/WaitlistDialog";
 
 const title = "Charter AI — AI-Native Project Management for Freelancers";
 const description =
@@ -47,6 +48,7 @@ function Index() {
         <FinalCta />
       </main>
       <Footer />
+      <WaitlistDialog />
     </div>
   );
 }
