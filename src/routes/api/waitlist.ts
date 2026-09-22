@@ -80,6 +80,10 @@ async function verifyTurnstile(
   const result = await verifyResponse.json()
 
   if (!result.success) {
+    console.warn(
+      'Turnstile verification failed',
+      result['error-codes'] ?? [],
+    )
     return false
   }
 
