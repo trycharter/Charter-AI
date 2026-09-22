@@ -42,7 +42,7 @@ async function verifyTurnstile(
   request: Request,
 ) {
   const secret =
-    process.env.TURNSTILE_SECRET_KEY
+    process.env['TURNSTILE_SECRET_KEY']
 
   if (!secret) {
     throw new Error(
@@ -91,7 +91,7 @@ async function verifyTurnstile(
   }
 
   const appOrigin =
-    process.env.APP_ORIGIN
+    process.env['APP_ORIGIN']
 
   if (appOrigin && result.hostname) {
     const expectedHostname =
@@ -118,7 +118,7 @@ export const Route = createFileRoute(
             request.headers.get('origin')
 
           const allowedOrigin =
-            process.env.APP_ORIGIN
+            process.env['APP_ORIGIN']
 
           if (
             allowedOrigin &&
@@ -197,16 +197,16 @@ export const Route = createFileRoute(
           }
 
           const apiKey =
-            process.env.RESEND_API_KEY
+            process.env['RESEND_API_KEY']
 
           const segmentId =
-            process.env.RESEND_SEGMENT_ID
+            process.env['RESEND_SEGMENT_ID']
 
           const from =
-            process.env.RESEND_FROM_EMAIL
+            process.env['RESEND_FROM_EMAIL']
 
           const adminEmail =
-            process.env.ADMIN_EMAIL
+            process.env['ADMIN_EMAIL']
 
           if (
             !apiKey ||
