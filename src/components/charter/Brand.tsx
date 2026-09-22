@@ -20,12 +20,9 @@ export function CharterWordmark({
   return <img src="/charter-wordmark.svg" alt={alt} className={className} draggable={false} />;
 }
 
+export const WAITLIST_OPEN_EVENT = "charter:open-waitlist";
+
+/** Opens the waitlist email popup from anywhere on the page. */
 export function scrollToEarlyAccess() {
-  const target = document.getElementById("early-access");
-  if (!target) return;
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
-  window.setTimeout(() => {
-    document.getElementById("waitlist-email")?.focus({ preventScroll: true });
-  }, reduce ? 0 : 900);
+  window.dispatchEvent(new Event(WAITLIST_OPEN_EVENT));
 }

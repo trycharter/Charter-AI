@@ -5,7 +5,7 @@ import { scrollToEarlyAccess } from "./Brand";
  * Keeps the same chunky button language as the nav and hero.
  */
 export function WaitlistCta({
-  note = "Only 100 waitlist spots for freelancers.",
+  note = "Early access for freelancers.",
   shadow = "#C9BBEF",
 }: {
   note?: string;
