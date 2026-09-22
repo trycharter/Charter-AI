@@ -140,7 +140,6 @@ export function WaitlistDialog() {
               Your email address
             </label>
             <input
-              ref={inputRef}
               id="waitlist-dialog-email"
               type="email"
               name="email"
