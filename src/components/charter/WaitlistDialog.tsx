@@ -1,16 +1,52 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import { CharterMark, WAITLIST_OPEN_EVENT } from "./Brand";
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+const TURNSTILE_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+      reset: (id?: string) => void;
+      remove: (id?: string) => void;
+    };
+  }
+}
+
+function loadTurnstile(): Promise<void> {
+  if (typeof window === "undefined") return Promise.resolve();
+  if (window.turnstile) return Promise.resolve();
+
+  const existing = document.querySelector<HTMLScriptElement>(`script[src="${TURNSTILE_SRC}"]`);
+  if (existing) {
+    return new Promise((resolve) => existing.addEventListener("load", () => resolve(), { once: true }));
+  }
+
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = TURNSTILE_SRC;
+    script.async = true;
+    script.defer = true;
+    script.addEventListener("load", () => resolve(), { once: true });
+    document.head.appendChild(script);
+  });
+}
 
 export function WaitlistDialog() {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [state, setState] = useState<"idle" | "loading" | "done">("idle");
+  const [successMessage, setSuccessMessage] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const widgetHostRef = useRef<HTMLDivElement>(null);
+  const widgetIdRef = useRef<string | null>(null);
+
+  const siteKey = import.meta.env['VITE_TURNSTILE_SITE_KEY'] as string | undefined;
 
   useEffect(() => {
     const onOpen = () => setOpen(true);
@@ -33,35 +69,102 @@ export function WaitlistDialog() {
     };
   }, [open]);
 
+  // Mount the Turnstile widget while the dialog form is visible.
+  useEffect(() => {
+    if (!open || state === "done" || !siteKey) return;
+    let cancelled = false;
+
+    loadTurnstile().then(() => {
+      if (cancelled || !widgetHostRef.current || !window.turnstile) return;
+      if (widgetIdRef.current !== null) return;
+      widgetIdRef.current = window.turnstile.render(widgetHostRef.current, {
+        sitekey: siteKey,
+        action: "waitlist",
+        theme: "light",
+        size: "flexible",
+        callback: (token: string) => setTurnstileToken(token),
+        "expired-callback": () => setTurnstileToken(""),
+        "timeout-callback": () => setTurnstileToken(""),
+        "error-callback": () => setTurnstileToken(""),
+      });
+    });
+
+    return () => {
+      cancelled = true;
+      if (widgetIdRef.current !== null && window.turnstile) {
+        window.turnstile.remove(widgetIdRef.current);
+      }
+      widgetIdRef.current = null;
+      setTurnstileToken("");
+    };
+  }, [open, state, siteKey]);
+
+  const resetTurnstile = useCallback(() => {
+    setTurnstileToken("");
+    if (widgetIdRef.current !== null && window.turnstile) {
+      window.turnstile.reset(widgetIdRef.current);
+    }
+  }, []);
+
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
+    if (state === "loading") return;
+
     const value = email.trim().toLowerCase();
     const person = name.trim();
 
-    if (!person || person.length > 100) {
+    if (!person || person.length > 80) {
       setError("Please enter your name.");
       return;
     }
 
-    if (!EMAIL_RE.test(value) || value.length > 255) {
+    if (!EMAIL_RE.test(value) || value.length > 254) {
       setError("Please enter a valid email address.");
+      return;
+    }
+
+    if (!turnstileToken) {
+      setError("Please complete the verification.");
       return;
     }
 
     setError(null);
     setState("loading");
 
-    const { error: dbError } = await supabase
-      .from("waitlist_signups")
-      .insert({ name: person, email: value, source: "landing-page" });
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: person,
+          email: value,
+          turnstileToken,
+          website,
+        }),
+      });
 
-    if (dbError && dbError.code !== "23505") {
+      const result = (await response.json().catch(() => null)) as
+        | { success?: boolean; alreadyJoined?: boolean; message?: string }
+        | null;
+
+      if (!response.ok || !result?.success) {
+        setState("idle");
+        setError(result?.message ?? "Something went wrong. Please try again.");
+        resetTurnstile();
+        return;
+      }
+
+      setSuccessMessage(
+        result.alreadyJoined
+          ? ["You're already on the Charter waitlist."]
+          : ["You're on the list.", "We'll reach out as Charter early-access spots open."],
+      );
+      setState("done");
+    } catch {
       setState("idle");
       setError("Something went wrong. Please try again.");
-      return;
+      resetTurnstile();
     }
-
-    setState("done");
   }
 
   if (!open) return null;
@@ -111,13 +214,17 @@ export function WaitlistDialog() {
         </p>
 
         {state === "done" ? (
-          <p
+          <div
             role="status"
             className="mt-7 rounded-2xl border-2 border-ink bg-mint px-5 py-4 text-[14.5px] font-semibold text-ink"
             style={{ boxShadow: "5px 5px 0px #111111" }}
           >
-            You&rsquo;re on the list. We&rsquo;ll be in touch with your early-access invite.
-          </p>
+            {successMessage.map((line) => (
+              <p key={line} className="[&+p]:mt-1.5">
+                {line}
+              </p>
+            ))}
+          </div>
         ) : (
           <form onSubmit={onSubmit} noValidate className="mt-7 text-left">
             <label htmlFor="waitlist-dialog-name" className="sr-only">
@@ -129,7 +236,7 @@ export function WaitlistDialog() {
               type="text"
               name="name"
               autoComplete="name"
-              maxLength={100}
+              maxLength={80}
               placeholder="Your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -144,6 +251,7 @@ export function WaitlistDialog() {
               type="email"
               name="email"
               autoComplete="email"
+              maxLength={254}
               placeholder="Your email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -151,9 +259,30 @@ export function WaitlistDialog() {
               aria-describedby={error ? "waitlist-dialog-error" : undefined}
               className="input-brut w-full px-5 py-3 text-[15px]"
             />
+
+            {/* Honeypot — hidden from real users, never display:none */}
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+              style={{
+                position: "absolute",
+                left: "-10000px",
+                width: "1px",
+                height: "1px",
+                overflow: "hidden",
+              }}
+            />
+
+            <div ref={widgetHostRef} className="mt-3 flex justify-center [&>*]:max-w-full" />
+
             <button
               type="submit"
-              disabled={state === "loading"}
+              disabled={state === "loading" || !turnstileToken}
               className="btn-brut group mt-3 h-[50px] w-full justify-center px-7 text-[15px] disabled:opacity-60"
               style={{ ["--btn-shadow" as string]: "#A0E4E0" }}
             >
