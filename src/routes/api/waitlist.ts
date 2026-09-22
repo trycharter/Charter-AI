@@ -334,21 +334,44 @@ export const Route = createFileRoute(
 <html>
   <body style="margin:0;padding:0;background:#FCF6ED;font-family:Arial,Helvetica,sans-serif;color:#111111;">
     <div style="max-width:600px;margin:0 auto;padding:48px 24px;">
+      <img
+        src="https://www.trycharter.io/email/charter-early-access-banner.png"
+        alt="Charter early access"
+        width="552"
+        style="display:block;width:100%;max-width:552px;border:2px solid #111111;border-radius:24px;margin-bottom:24px;"
+      />
+
       <div style="border:2px solid #111111;border-radius:24px;background:#C9BBEF;padding:40px;">
         <div style="font-size:24px;font-weight:700;margin-bottom:28px;">
           Charter
         </div>
 
         <h1 style="margin:0 0 18px;font-size:34px;line-height:1.1;">
-          You're on the list.
+          You're on the list${safeName ? `, ${safeName}` : ''}.
         </h1>
 
-        <p style="margin:0;font-size:17px;line-height:1.6;">
+        <p style="margin:0 0 28px;font-size:17px;line-height:1.6;">
           We're starting with a small group of freelancers and we'll reach out as Charter early-access spots open.
         </p>
+
+        <a
+          href="https://x.com/Manavtalan1"
+          style="display:inline-block;border:2px solid #111111;border-radius:999px;background:#FCF6ED;color:#111111;font-size:15px;font-weight:700;text-decoration:none;padding:12px 22px;"
+        >
+          Follow the build on X &rarr;
+        </a>
       </div>
 
-      <p style="color:#55524D;font-size:13px;line-height:1.5;margin-top:24px;">
+      <div style="margin-top:28px;text-align:center;">
+        <a href="https://x.com/trycharterai" style="display:inline-block;margin:0 8px;text-decoration:none;">
+          <img src="https://www.trycharter.io/email/x.png" alt="Charter on X" width="28" height="28" style="display:block;border:0;" />
+        </a>
+        <a href="https://www.instagram.com/trycharter.ai" style="display:inline-block;margin:0 8px;text-decoration:none;">
+          <img src="https://www.trycharter.io/email/instagram.png" alt="Charter on Instagram" width="28" height="28" style="display:block;border:0;" />
+        </a>
+      </div>
+
+      <p style="color:#55524D;font-size:13px;line-height:1.5;margin-top:24px;text-align:center;">
         You received this because you joined the Charter early-access list.
       </p>
     </div>
@@ -358,7 +381,9 @@ export const Route = createFileRoute(
               },
               {
                 idempotencyKey:
-                  `charter-waitlist-user-v1-${hash}`,
+                  `charter-waitlist-user-v2-${hash}`,
+              },
+
               },
             )
 
