@@ -6,6 +6,7 @@ const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
 export function WaitlistDialog() {
   const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [state, setState] = useState<"idle" | "loading" | "done">("idle");
   const [error, setError] = useState<string | null>(null);
@@ -35,6 +36,12 @@ export function WaitlistDialog() {
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     const value = email.trim().toLowerCase();
+    const person = name.trim();
+
+    if (!person || person.length > 100) {
+      setError("Please enter your name.");
+      return;
+    }
 
     if (!EMAIL_RE.test(value) || value.length > 255) {
       setError("Please enter a valid email address.");
@@ -46,7 +53,7 @@ export function WaitlistDialog() {
 
     const { error: dbError } = await supabase
       .from("waitlist_signups")
-      .insert({ email: value, source: "landing-page" });
+      .insert({ name: person, email: value, source: "landing-page" });
 
     if (dbError && dbError.code !== "23505") {
       setState("idle");
@@ -113,6 +120,22 @@ export function WaitlistDialog() {
           </p>
         ) : (
           <form onSubmit={onSubmit} noValidate className="mt-7 text-left">
+            <label htmlFor="waitlist-dialog-name" className="sr-only">
+              Your name
+            </label>
+            <input
+              ref={inputRef}
+              id="waitlist-dialog-name"
+              type="text"
+              name="name"
+              autoComplete="name"
+              maxLength={100}
+              placeholder="Your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="input-brut mb-3 w-full px-5 py-3 text-[15px]"
+            />
+
             <label htmlFor="waitlist-dialog-email" className="sr-only">
               Your email address
             </label>
