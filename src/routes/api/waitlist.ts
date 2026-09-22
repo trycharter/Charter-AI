@@ -29,6 +29,15 @@ function jsonResponse(
   })
 }
 
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 function emailHash(email: string) {
   return createHash('sha256')
     .update(email)
