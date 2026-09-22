@@ -77,14 +77,6 @@ async function verifyTurnstile(
 
   const result = await verifyResponse.json()
 
-  console.error('TURNSTILE_DIAGNOSTIC', {
-    success: result.success,
-    errorCodes: result['error-codes'] ?? [],
-    hostname: result.hostname ?? null,
-    action: result.action ?? null,
-  })
-
-
   if (!result.success) {
     console.warn(
       'Turnstile verification failed',
