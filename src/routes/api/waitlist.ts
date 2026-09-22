@@ -383,8 +383,6 @@ export const Route = createFileRoute(
                 idempotencyKey:
                   `charter-waitlist-user-v2-${hash}`,
               },
-
-              },
             )
 
           if (userEmail.error) {
