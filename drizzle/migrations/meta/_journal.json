@@ -8,6 +8,13 @@
       "when": 1789655033694,
       "tag": "0000_create_waitlist_signups",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790086300399,
+      "tag": "0001_add_name_to_waitlist_signups",
+      "breakpoints": true
     }
   ]
 }
