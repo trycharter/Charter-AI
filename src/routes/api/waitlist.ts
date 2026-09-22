@@ -320,6 +320,10 @@ export const Route = createFileRoute(
           const hash =
             emailHash(email)
 
+          const safeName =
+            escapeHtml(name)
+
+
           const userEmail =
             await resend.emails.send(
               {
