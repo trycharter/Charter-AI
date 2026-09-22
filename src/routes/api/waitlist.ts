@@ -286,30 +286,38 @@ export const Route = createFileRoute(
             )
           }
 
-          const segmentResponse =
-            await fetch(
-              `https://api.resend.com/segments/${segmentId}/contacts`,
+          const segmentResult =
+            await resend.contacts.segments.add(
               {
-                method: 'POST',
-                headers: {
-                  Authorization:
-                    `Bearer ${apiKey}`,
-                  'Content-Type':
-                    'application/json',
-                },
-                body: JSON.stringify({
-                  contact_id: contactId,
-                }),
+                contactId,
+                segmentId,
               },
             )
 
-          if (
-            !segmentResponse.ok &&
-            segmentResponse.status !== 409
-          ) {
-            throw new Error(
-              'Could not add contact to segment',
-            )
+          if (segmentResult.error) {
+            const alreadyInSegment =
+              segmentResult.error
+                .statusCode === 409
+
+            if (!alreadyInSegment) {
+              console.error(
+                'Could not add contact to segment',
+                {
+                  name: segmentResult.error
+                    .name,
+                  message:
+                    segmentResult.error
+                      .message,
+                  statusCode:
+                    segmentResult.error
+                      .statusCode,
+                },
+              )
+
+              throw new Error(
+                'Could not add contact to segment',
+              )
+            }
           }
 
           if (!isNew) {
