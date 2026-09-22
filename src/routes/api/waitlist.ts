@@ -171,6 +171,10 @@ export const Route = createFileRoute(
           } = parsed.data
 
           if (website) {
+            console.warn(
+              'Waitlist honeypot triggered',
+            )
+
             return jsonResponse({
               success: true,
             })
