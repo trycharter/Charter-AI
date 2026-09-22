@@ -83,17 +83,14 @@ async function verifyTurnstile(
     return false
   }
 
-  if (
-    result.action &&
-    result.action !== 'waitlist'
-  ) {
+  if (result.action !== 'waitlist') {
     return false
   }
 
   const appOrigin =
     process.env['APP_ORIGIN']
 
-  if (appOrigin && result.hostname) {
+  if (appOrigin) {
     const expectedHostname =
       new URL(appOrigin).hostname
 
