@@ -37,7 +37,6 @@ export function WaitlistDialog() {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [website, setWebsite] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
   const [state, setState] = useState<"idle" | "loading" | "done">("idle");
   const [successMessage, setSuccessMessage] = useState<string[]>([]);
@@ -139,7 +138,6 @@ export function WaitlistDialog() {
           name: person,
           email: value,
           turnstileToken,
-          website,
         }),
       });
 
@@ -260,23 +258,6 @@ export function WaitlistDialog() {
               className="input-brut w-full px-5 py-3 text-[15px]"
             />
 
-            {/* Honeypot — hidden from real users, never display:none */}
-            <input
-              type="text"
-              name="website"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              value={website}
-              onChange={(e) => setWebsite(e.target.value)}
-              style={{
-                position: "absolute",
-                left: "-10000px",
-                width: "1px",
-                height: "1px",
-                overflow: "hidden",
-              }}
-            />
 
             <div ref={widgetHostRef} className="mt-3 flex justify-center [&>*]:max-w-full" />
 
