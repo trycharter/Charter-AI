@@ -13,7 +13,8 @@ import { WaitlistDialog } from "@/components/charter/WaitlistDialog";
 
 const title = "Charter AI — AI-Native Project Management for Freelancers";
 const description =
-  "Turn messy client conversations into clear scope, client-ready contracts, actionable tasks and one organized workspace with Charter AI.";
+  "Turn messy client conversations, briefs, files and decisions into a clear project workspace. Charter AI is AI-native project management built for freelancers.";
+const canonical = "https://www.trycharter.io/";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -21,15 +22,15 @@ export const Route = createFileRoute("/")({
     meta: [
       { title },
       { name: "description", content: description },
-      { property: "og:title", content: "Charter AI" },
-      { property: "og:description", content: "AI-native project management for freelancers." },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: canonical },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Charter AI" },
-      { name: "twitter:description", content: "AI-native project management for freelancers." },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: canonical }],
   }),
 });
 
