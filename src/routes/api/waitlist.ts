@@ -346,12 +346,12 @@ export const Route = createFileRoute(
 <!doctype html>
 <html>
   <body style="margin:0;padding:0;background:#FCF6ED;font-family:Arial,Helvetica,sans-serif;color:#111111;">
-    <div style="max-width:600px;margin:0 auto;padding:48px 24px;">
+    <div style="max-width:600px;margin:0 auto;padding:40px 24px;">
       <img
-        src="https://www.trycharter.io/email/charter-early-access-banner.png"
-        alt="Charter early access"
-        width="552"
-        style="display:block;width:100%;max-width:552px;border:2px solid #111111;border-radius:24px;margin-bottom:24px;"
+        src="https://www.trycharter.io/email/charter-logo.png"
+        alt="Charter"
+        width="145"
+        style="display:block;width:145px;max-width:145px;height:auto;border:0;margin:0 0 24px 0;"
       />
 
       <div style="border:2px solid #111111;border-radius:24px;background:#C9BBEF;padding:40px;">
@@ -375,7 +375,7 @@ export const Route = createFileRoute(
         </a>
       </div>
 
-      <div style="margin-top:28px;text-align:center;">
+      <div style="margin-top:26px;text-align:center;">
         <a href="https://x.com/trycharterai" style="display:inline-block;margin:0 8px;text-decoration:none;">
           <img src="https://www.trycharter.io/email/x.png" alt="Charter on X" width="28" height="28" style="display:block;border:0;" />
         </a>
