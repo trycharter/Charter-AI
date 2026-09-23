@@ -15,6 +15,9 @@ const title = "Charter AI — AI-Native Project Management for Freelancers";
 const description =
   "Turn messy client conversations, briefs, files and decisions into a clear project workspace. Charter AI is AI-native project management built for freelancers.";
 const canonical = "https://www.trycharter.io/";
+const socialDescription =
+  "Turn messy client conversations into a project you can actually run.";
+const socialImage = "https://www.trycharter.io/charter-og.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
