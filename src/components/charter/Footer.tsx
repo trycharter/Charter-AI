@@ -65,14 +65,14 @@ export function Footer() {
       </div>
 
       <div aria-hidden className="relative -mb-[2vw] flex select-none justify-center px-[5vw]">
-        {/* the wordmark shape is used as a mask so the pastel palette shows through it */}
+        {/* the wordmark shape is used as a mask so a solid ink fill shows through it */}
         <div
           data-wordmark
           className="relative w-[clamp(260px,86vw,1320px)] max-w-full"
           style={{
             aspectRatio: "1057 / 225",
-            backgroundImage:
-              "linear-gradient(100deg, var(--lavender) 0%, var(--turquoise) 18%, var(--mint) 34%, var(--pistachio) 50%, var(--butter) 64%, var(--peach) 78%, var(--blush) 90%, var(--mauve) 100%)",
+            backgroundColor: "#111111",
+            filter: "drop-shadow(8px 8px 0px var(--lavender))",
             WebkitMaskImage: "url(/charter-wordmark.svg)",
             maskImage: "url(/charter-wordmark.svg)",
             WebkitMaskSize: "100% 100%",
