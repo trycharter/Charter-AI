@@ -10,7 +10,8 @@ const socials = [
     tone: "var(--mauve)",
     external: true,
   },
-  { label: "Privacy", href: "#top", tone: "var(--pistachio)", external: false },
+  { label: "Privacy", href: "/privacy", tone: "var(--pistachio)", external: false },
+  { label: "Terms", href: "/terms", tone: "var(--lavender)", external: false },
 ];
 
 export function Footer() {
